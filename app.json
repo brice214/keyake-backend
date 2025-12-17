@@ -46,7 +46,8 @@
       },
       "eas": {
         "projectId": "ea3a7393-a470-436d-9666-6970f304fcc5"
-      }
+      },
+      "API_BASE_URL": "https://keyake-backend.vercel.app"
     },
     "owner": "briceemry"
   }

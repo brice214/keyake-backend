@@ -22,5 +22,14 @@ app.get("/", (c) => {
   return c.json({ status: "ok", message: "API is running" });
 });
 
+// Error handler pour capturer les erreurs
+app.onError((err, c) => {
+  console.error('Server error:', err);
+  return c.json({ 
+    error: err.message,
+    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+  }, 500);
+});
+
 // Export pour Vercel
 export default app;

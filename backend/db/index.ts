@@ -7,7 +7,7 @@ import * as schema from './schema';
 const connectionString = process.env.DATABASE_URL;
 
 if (!connectionString) {
-  throw new Error('DATABASE_URL is not defined');
+  throw new Error('DATABASE_URL is not defined in environment variables. Please configure it in Vercel.');
 }
 
 // Pour Supabase, on utilise postgres-js qui fonctionne avec les connection strings standard

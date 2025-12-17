@@ -24,3 +24,4 @@ drizzle.config.ts
 create-admin-local.js
 build-apk.ps1
 
+# Ne pas exclure backend/ et api/ - ils sont nécessaires !
