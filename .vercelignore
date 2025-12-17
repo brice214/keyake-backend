@@ -1,0 +1,26 @@
+# Fichiers à exclure du déploiement Vercel
+app/
+assets/
+contexts/
+lib/
+mocks/
+types/
+constants/
+dist/
+.expo/
+node_modules/
+*.md
+*.ps1
+*.js
+env
+.env
+.env.local
+.gitignore
+eas.json
+app.json
+tsconfig.json
+eslint.config.js
+drizzle.config.ts
+create-admin-local.js
+build-apk.ps1
+
