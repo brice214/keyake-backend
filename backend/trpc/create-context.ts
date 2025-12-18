@@ -1,7 +1,7 @@
 import { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
-import { db } from '../db';
+import { db } from '../db/index.js';
 
 export const createContext = async (opts: FetchCreateContextFnOptions) => {
   return {

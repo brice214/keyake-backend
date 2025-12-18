@@ -1,4 +1,4 @@
-import { createTRPCRouter } from "./create-context";
+import { createTRPCRouter } from "./create-context.js";
 import hiRoute from "./routes/example/hi/route";
 import { loginUserProcedure } from "./routes/auth/login-user/route";
 import { signupUserProcedure } from "./routes/auth/signup-user/route";

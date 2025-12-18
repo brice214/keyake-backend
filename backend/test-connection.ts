@@ -1,5 +1,5 @@
-import { db } from './db';
-import { User, Business, Survey, SuperAdmin } from './db/schema';
+import { db } from './db/index.js';
+import { User, Business, Survey, SuperAdmin } from './db/schema.js';
 
 export async function testDatabaseConnection() {
   try {
