@@ -1,5 +1,8 @@
 {
   "functions": {
+    "api/**/*.ts": {
+      "runtime": "@vercel/node"
+    },
     "api/index.ts": {
       "includeFiles": "backend/**"
     }
