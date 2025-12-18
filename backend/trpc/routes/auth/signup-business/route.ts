@@ -1,7 +1,7 @@
 import { publicProcedure } from '../../../create-context.js';
 import { z } from 'zod';
-import { db } from '../../../db/index.js';
-import { Business } from '../../../db/schema.js';
+import { db } from '../../../../db/index.js';
+import { Business } from '../../../../db/schema.js';
 import bcrypt from 'bcryptjs';
 import { eq } from 'drizzle-orm';
 

@@ -1,7 +1,7 @@
 import { publicProcedure } from '../../../create-context.js';
 import { z } from 'zod';
-import { db } from '../../../db/index.js';
-import { PaymentTransaction, Business } from '../../../db/schema.js';
+import { db } from '../../../../db/index.js';
+import { PaymentTransaction, Business } from '../../../../db/schema.js';
 import { eq } from 'drizzle-orm';
 
 export const addCreditsProcedure = publicProcedure

@@ -1,7 +1,7 @@
 import { publicProcedure } from '../../../create-context.js';
 import { z } from 'zod';
-import { db } from '../../../db/index.js';
-import { Survey, Question } from '../../../db/schema.js';
+import { db } from '../../../../db/index.js';
+import { Survey, Question } from '../../../../db/schema.js';
 
 export const createSurveyProcedure = publicProcedure
   .input(
