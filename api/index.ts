@@ -11,5 +11,7 @@ app.get("/", (c) => {
   return c.json({ status: "ok", message: "API is running" });
 });
 
-// Export pour Vercel
-export default app;
+// Export pour Vercel - utiliser app.fetch pour compatibilité avec Vercel
+export default {
+  fetch: app.fetch,
+};
