@@ -64,7 +64,5 @@ app.onError((err, c) => {
 });
 
 // Export pour Vercel - Hono fonctionne directement avec Vercel Serverless Functions
+// Vercel détecte automatiquement l'app Hono et utilise app.fetch
 export default app;
-
-// Alternative: export explicite pour Vercel (si nécessaire)
-// export const handler = app.fetch;
