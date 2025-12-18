@@ -12,10 +12,14 @@ app.use("*", cors());
 // tRPC endpoint - capturer AVANT les autres routes avec un middleware global
 app.use("*", async (c, next) => {
   const path = c.req.path;
+  const url = c.req.url;
+  
+  // Log toutes les requêtes pour debug
+  console.log('Request received:', { path, url, method: c.req.method });
   
   // Si le chemin commence par /trpc, le traiter comme tRPC
   if (path.startsWith("/trpc")) {
-    console.log('tRPC middleware triggered:', path, c.req.method, c.req.url);
+    console.log('✅ tRPC middleware triggered!', { path, url, method: c.req.method });
     
     try {
       const response = await fetchRequestHandler({
@@ -24,13 +28,19 @@ app.use("*", async (c, next) => {
         router: appRouter,
         createContext,
       });
+      console.log('tRPC response status:', response.status);
       return response;
     } catch (error) {
-      console.error('tRPC error:', error);
-      return c.json({ error: error instanceof Error ? error.message : 'Unknown error' }, 500);
+      console.error('❌ tRPC error:', error);
+      return c.json({ 
+        error: error instanceof Error ? error.message : 'Unknown error',
+        path,
+        url 
+      }, 500);
     }
   }
   
+  console.log('⚠️ Path does not start with /trpc, passing to next handler');
   await next();
 });
 
