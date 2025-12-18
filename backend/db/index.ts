@@ -1,6 +1,6 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
-import * as schema from './schema';
+import * as schema from './schema.js';
 
 // Sur Vercel, on utilise uniquement process.env
 // expo-constants n'est disponible que dans l'app mobile
