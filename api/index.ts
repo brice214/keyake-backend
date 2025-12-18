@@ -14,14 +14,16 @@ app.get("/", (c) => {
   return c.json({ status: "ok", message: "API is running" });
 });
 
-// tRPC endpoint - middleware global qui vérifie explicitement le chemin
-app.use("*", async (c, next) => {
-  const path = c.req.path;
-  console.log('Middleware check:', path, 'starts with /trpc?', path.startsWith('/trpc'));
+// Route de test pour vérifier le routage
+app.get("/test", (c) => {
+  return c.json({ path: c.req.path, url: c.req.url, message: "Test route works" });
+});
+
+// tRPC endpoint - utiliser app.all pour toutes les méthodes HTTP
+app.all("/trpc/*", async (c) => {
+  console.log('tRPC handler called:', c.req.path, c.req.method, c.req.url);
   
-  if (path.startsWith("/trpc")) {
-    console.log('tRPC request detected:', path, c.req.method);
-    
+  try {
     const response = await fetchRequestHandler({
       endpoint: "/api/trpc",
       req: c.req.raw,
@@ -29,9 +31,10 @@ app.use("*", async (c, next) => {
       createContext,
     });
     return response;
+  } catch (error) {
+    console.error('tRPC error:', error);
+    return c.json({ error: error instanceof Error ? error.message : 'Unknown error' }, 500);
   }
-  
-  await next();
 });
 
 // Error handler pour capturer les erreurs
