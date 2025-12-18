@@ -1,4 +1,4 @@
-import { publicProcedure } from '../../create-context.js';
+import { publicProcedure } from '../../../create-context.js';
 import { z } from 'zod';
 import { db } from '../../../db/index.js';
 import { SuperAdmin } from '../../../db/schema.js';

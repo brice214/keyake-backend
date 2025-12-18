@@ -1,4 +1,4 @@
-import { publicProcedure } from '../../create-context.js';
+import { publicProcedure } from '../../../create-context.js';
 import { testDatabaseConnection } from '../../../test-connection.js';
 
 export const testConnectionProcedure = publicProcedure.query(async () => {

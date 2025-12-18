@@ -1,4 +1,4 @@
-import { publicProcedure } from '../../create-context.js';
+import { publicProcedure } from '../../../create-context.js';
 import { db } from '../../../db/index.js';
 import { Business, User, Survey } from '../../../db/schema.js';
 import { count } from 'drizzle-orm';
