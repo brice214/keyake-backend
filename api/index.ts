@@ -9,10 +9,12 @@ const app = new Hono();
 
 app.use("*", cors());
 
+// tRPC endpoint - trpcServer gère le routage interne
+// Sur Vercel, api/index.ts est servi sous /api, donc /trpc devient /api/trpc
 app.all(
-  "/trpc/*",
+  "/trpc*",
   trpcServer({
-    endpoint: "/api/trpc",
+    endpoint: "/trpc",
     router: appRouter,
     createContext,
   })
