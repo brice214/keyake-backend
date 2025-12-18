@@ -10,8 +10,12 @@ const app = new Hono();
 app.use("*", cors());
 
 // tRPC endpoint - utiliser fetchRequestHandler directement
-// Sur Vercel, api/index.ts est servi sous /api, donc /trpc/* devient /api/trpc/*
-app.all("/trpc/*", async (c) => {
+// Sur Vercel, api/index.ts est servi sous /api, donc /trpc devient /api/trpc
+// Capturer toutes les routes commençant par /trpc
+app.all("/trpc*", async (c) => {
+  // Log pour debug
+  console.log('tRPC request:', c.req.path, c.req.method);
+  
   const response = await fetchRequestHandler({
     endpoint: "/api/trpc",
     req: c.req.raw,
