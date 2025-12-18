@@ -14,9 +14,9 @@ app.get("/", (c) => {
   return c.json({ status: "ok", message: "API is running" });
 });
 
-// tRPC endpoint - capturer TOUTES les routes /trpc/* avec app.on pour toutes les méthodes
-app.on(["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], "/trpc/*", async (c) => {
-  console.log('tRPC request:', c.req.path, c.req.method);
+// tRPC endpoint - capturer toutes les routes /trpc* avec toutes les méthodes HTTP
+app.use("/trpc*", async (c) => {
+  console.log('tRPC request:', c.req.path, c.req.method, 'URL:', c.req.url);
   
   const response = await fetchRequestHandler({
     endpoint: "/api/trpc",
@@ -36,5 +36,8 @@ app.onError((err, c) => {
   }, 500);
 });
 
-// Export pour Vercel
+// Export pour Vercel - Hono fonctionne directement avec Vercel Serverless Functions
 export default app;
+
+// Alternative: export explicite pour Vercel (si nécessaire)
+// export const handler = app.fetch;

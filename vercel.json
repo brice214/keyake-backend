@@ -1,2 +1,8 @@
-{}
+{
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": "backend/**"
+    }
+  }
+}
 
