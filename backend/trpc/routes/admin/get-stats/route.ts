@@ -1,6 +1,6 @@
-import { publicProcedure } from '@/backend/trpc/create-context';
-import { db } from '@/backend/db';
-import { Business, User, Survey } from '@/backend/db/schema';
+import { publicProcedure } from '../../create-context.js';
+import { db } from '../../../db/index.js';
+import { Business, User, Survey } from '../../../db/schema.js';
 import { count } from 'drizzle-orm';
 
 export const getAdminStatsProcedure = publicProcedure.query(async () => {

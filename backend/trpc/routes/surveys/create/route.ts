@@ -1,7 +1,7 @@
-import { publicProcedure } from '@/backend/trpc/create-context';
+import { publicProcedure } from '../../create-context.js';
 import { z } from 'zod';
-import { db } from '@/backend/db';
-import { Survey, Question } from '@/backend/db/schema';
+import { db } from '../../../db/index.js';
+import { Survey, Question } from '../../../db/schema.js';
 
 export const createSurveyProcedure = publicProcedure
   .input(

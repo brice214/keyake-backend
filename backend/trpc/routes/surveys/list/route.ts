@@ -1,6 +1,6 @@
-import { publicProcedure } from '@/backend/trpc/create-context';
-import { db } from '@/backend/db';
-import { Survey, Question } from '@/backend/db/schema';
+import { publicProcedure } from '../../create-context.js';
+import { db } from '../../../db/index.js';
+import { Survey, Question } from '../../../db/schema.js';
 import { eq } from 'drizzle-orm';
 
 export const listSurveysProcedure = publicProcedure.query(async () => {
