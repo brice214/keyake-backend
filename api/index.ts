@@ -9,22 +9,29 @@ const app = new Hono();
 
 app.use("*", cors());
 
-// Route racine d'abord
+// Route racine
 app.get("/", (c) => {
   return c.json({ status: "ok", message: "API is running" });
 });
 
-// tRPC endpoint - capturer toutes les routes /trpc* avec toutes les méthodes HTTP
-app.use("/trpc*", async (c) => {
-  console.log('tRPC request:', c.req.path, c.req.method, 'URL:', c.req.url);
+// tRPC endpoint - middleware global qui vérifie explicitement le chemin
+app.use("*", async (c, next) => {
+  const path = c.req.path;
+  console.log('Middleware check:', path, 'starts with /trpc?', path.startsWith('/trpc'));
   
-  const response = await fetchRequestHandler({
-    endpoint: "/api/trpc",
-    req: c.req.raw,
-    router: appRouter,
-    createContext,
-  });
-  return response;
+  if (path.startsWith("/trpc")) {
+    console.log('tRPC request detected:', path, c.req.method);
+    
+    const response = await fetchRequestHandler({
+      endpoint: "/api/trpc",
+      req: c.req.raw,
+      router: appRouter,
+      createContext,
+    });
+    return response;
+  }
+  
+  await next();
 });
 
 // Error handler pour capturer les erreurs
