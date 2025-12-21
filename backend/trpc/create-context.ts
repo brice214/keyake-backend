@@ -21,7 +21,7 @@ export const publicProcedure = t.procedure;
 
 const isAuthenticated = t.middleware(async ({ ctx, next }) => {
   const userId = ctx.req.headers.get('x-user-id');
-  
+
   if (!userId) {
     throw new TRPCError({ code: 'UNAUTHORIZED' });
   }
