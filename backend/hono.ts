@@ -6,7 +6,7 @@ import { createContext } from "./trpc/create-context.js";
 
 const app = new Hono();
 
-app.use("*", cors());
+// app.use("*", cors());
 
 app.use(
   "/trpc/*",
