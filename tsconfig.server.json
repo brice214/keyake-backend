@@ -1,0 +1,21 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "noEmit": true
+    },
+    "include": [
+        "api/**/*.ts",
+        "backend/**/*.ts",
+        "drizzle.config.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "app",
+        "components",
+        "constants",
+        "contexts",
+        "hooks",
+        "lib",
+        "types"
+    ]
+}
