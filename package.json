@@ -6,6 +6,7 @@
     "start": "bunx rork start -p nt5w6xxnyq754v0zo93hi --tunnel",
     "start-web": "bunx rork start -p nt5w6xxnyq754v0zo93hi --web --tunnel",
     "start-web-dev": "DEBUG=expo* bunx rork start -p nt5w6xxnyq754v0zo93hi --web --tunnel",
+    "build": "tsc --project tsconfig.server.json",
     "lint": "expo lint"
   },
   "dependencies": {
@@ -63,11 +64,12 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@expo/ngrok": "^4.1.0",
+    "@types/babel__traverse": "^7.28.0",
     "@types/react": "~19.1.10",
     "eslint": "^9.31.0",
     "eslint-config-expo": "~10.0.0",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "~5.9.2"
+    "typescript": "^5.7.2"
   },
   "private": true
 }

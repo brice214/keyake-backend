@@ -31,7 +31,7 @@ export default function AuthScreen() {
   const [mode, setMode] = useState<AuthMode>("login");
   const [contactMethod, setContactMethod] = useState<ContactMethod>("email");
   const [showPassword, setShowPassword] = useState(false);
-  
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -77,7 +77,7 @@ export default function AuthScreen() {
         await AsyncStorage.setItem("user_authenticated", "true");
         await AsyncStorage.setItem("user_type", "participant");
         await AsyncStorage.setItem("user_name", result.user.name);
-        await AsyncStorage.setItem("user_id", result.user.id);
+        await AsyncStorage.setItem("USER_ID", result.user.id);
         await AsyncStorage.setItem("auth_token", result.token);
 
         router.replace("/(tabs)/home" as never);
@@ -92,7 +92,7 @@ export default function AuthScreen() {
         await AsyncStorage.setItem("user_authenticated", "true");
         await AsyncStorage.setItem("user_type", "participant");
         await AsyncStorage.setItem("user_name", result.name);
-        await AsyncStorage.setItem("user_id", result.id);
+        await AsyncStorage.setItem("USER_ID", result.id);
 
         router.replace("/(tabs)/home" as never);
       }
@@ -107,7 +107,7 @@ export default function AuthScreen() {
       await AsyncStorage.setItem("user_authenticated", "true");
       await AsyncStorage.setItem("user_type", "participant");
       await AsyncStorage.setItem("user_name", `Utilisateur ${provider}`);
-      
+
       router.replace("/(tabs)/home" as never);
     } catch (error) {
       console.error("Error saving auth state:", error);
