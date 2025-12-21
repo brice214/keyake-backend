@@ -14,6 +14,7 @@ if (!connectionString) {
 const client = postgres(connectionString, {
   max: 1, // Limiter les connexions pour éviter les problèmes
   ssl: 'require', // Supabase nécessite SSL
+  prepare: false, // Désactiver les "prepared statements" pour compatibilité avec Connection Poolers (Port 6543)
 });
 
 export const db = drizzle(client, { schema });
