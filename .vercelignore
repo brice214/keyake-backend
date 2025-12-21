@@ -18,8 +18,7 @@ env
 .gitignore
 eas.json
 app.json
-!tsconfig.server.json
-!tsconfig.json
+
 eslint.config.js
 drizzle.config.ts
 create-admin-local.js
