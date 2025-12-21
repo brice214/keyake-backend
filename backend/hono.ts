@@ -6,7 +6,12 @@ import { createContext } from "./trpc/create-context.js";
 
 const app = new Hono();
 
-// app.use("*", cors());
+// Activer CORS pour permettre les requêtes depuis l'app mobile
+app.use("*", cors({
+  origin: "*", // En production, spécifiez les domaines autorisés
+  allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowHeaders: ["Content-Type", "Authorization", "x-user-id"],
+}));
 
 app.use(
   "/trpc/*",
